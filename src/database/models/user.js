@@ -12,6 +12,11 @@ const User = (sequelize, DataTypes) => {
   }, {
     timestamps: false, // para evitar o erro de 'createdAt'
   })
+
+  User.associate = (models) => {
+		User.hasMany(models.BlogPost, { foreignKey: 'userId', as: 'post' });
+	};
+
   return User;
 };
 
