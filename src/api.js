@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const { throwMiddleware } = require('./database/middleware/errorMiddleware');
 const { loginValidation } = require('./database/middleware/loginMiddleware');
 const { userValidation } = require('./database/middleware/userMiddleware');
+const { validateJWT } = require('./database/middleware/tokenMiddleware');
 
 const controller = require('./database/controllers');
 
@@ -14,7 +15,7 @@ app.use(bodyParser.json());
 
 app.post('/login', loginValidation, controller.login.getLogin);
 
-app.get('/user', controller.user.getUser);
+app.get('/user', validateJWT, controller.user.getUsers);
 app.post('/user', userValidation, controller.user.createUser);
 
 app.use(throwMiddleware);
