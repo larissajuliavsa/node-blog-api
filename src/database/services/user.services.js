@@ -6,6 +6,11 @@ const errorMessage = (status, message) => ({
   message,
 });
 
+const getUsers = async () => {
+  const users = await User.findAll({ attributes: { exclude: ['password'] } });
+  return users;
+};
+
 const createUser = async ({ displayName, email, password, image }) => {
   const data = await User.findOne({ where: { email, password } });
 
@@ -26,5 +31,6 @@ const createUser = async ({ displayName, email, password, image }) => {
 };
 
 module.exports = {
+  getUsers,
   createUser,
 };
