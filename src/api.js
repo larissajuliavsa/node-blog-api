@@ -14,7 +14,8 @@ app.use(bodyParser.json());
 
 app.post('/login', loginValidation, controller.login.getLogin);
 
-app.post('/user', userValidation, controller.user.getUser);
+app.get('/user', controller.user.getUser);
+app.post('/user', userValidation, controller.user.createUser);
 
 app.use(throwMiddleware);
 

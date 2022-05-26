@@ -6,7 +6,7 @@ const errorMessage = (status, message) => ({
   message,
 });
 
-const getUser = async ({ displayName, email, password, image }) => {
+const createUser = async ({ displayName, email, password, image }) => {
   const data = await User.findOne({ where: { email, password } });
 
   if (data) throw errorMessage(409, 'User already registered');
@@ -26,5 +26,5 @@ const getUser = async ({ displayName, email, password, image }) => {
 };
 
 module.exports = {
-  getUser,
+  createUser,
 };
