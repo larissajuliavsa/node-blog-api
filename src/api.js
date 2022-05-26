@@ -25,6 +25,7 @@ app.post('/user', userValidation, controller.user.createUser);
 app.get('/user/:id', validateJWT, controller.user.getUserId);
 
 // Route Categories
+app.get('/categories', validateJWT, controller.category.getCategories);
 app.post('/categories', validateJWT, categoryValidation, controller.category.createCategory);
 
 app.use(throwMiddleware);
