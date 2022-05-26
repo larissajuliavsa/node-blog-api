@@ -18,6 +18,8 @@ app.post('/login', loginValidation, controller.login.getLogin);
 app.get('/user', validateJWT, controller.user.getUsers);
 app.post('/user', userValidation, controller.user.createUser);
 
+app.get('/user/:id', validateJWT, controller.user.getUserId);
+
 app.use(throwMiddleware);
 
 module.exports = app;
