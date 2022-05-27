@@ -1,5 +1,5 @@
 const { User } = require('../models');
-const { generateJWT } = require('../middleware/tokenMiddleware');
+const { generateJWT } = require('../../middleware/tokenMiddleware');
 
 const errorMessage = (status, message) => ({
   status,
